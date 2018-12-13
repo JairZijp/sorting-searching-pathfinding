@@ -37,7 +37,7 @@ public class Dijkstra {
      * the edge-weighted digraph <tt>G</tt>.
      * @param G the edge-weighted digraph
      * @param s the source vertex
-     * @throws IllegalArgumentException if an edge weight is negative
+     * @throws IllegalArgumentException if an edge its weight is negative
      * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
      */
     public Dijkstra(EdgeWeightedDigraph G, int s) {
