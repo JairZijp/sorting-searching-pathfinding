@@ -43,7 +43,7 @@ public class Dijkstra {
     public Dijkstra(EdgeWeightedDigraph G, int s) {
         for (DirectedEdge e : G.edges()) {
             if (e.weight() < 0)
-                throw new IllegalArgumentException("edge " + e + " has negative weight");
+                throw new IllegalArgumentException("edge " + e + " has a negative weight");
         }
 
         distTo = new double[G.V()];
