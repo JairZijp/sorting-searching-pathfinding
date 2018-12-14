@@ -28,6 +28,7 @@ import java.util.Stack;
  * @author Nico Tromp
  */
 public class Dijkstra {
+    private int edgesCounted = 0;
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
@@ -41,6 +42,8 @@ public class Dijkstra {
      * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
      */
     public Dijkstra(EdgeWeightedDigraph G, int s) {
+        edgesCounted = 0;
+
         for (DirectedEdge e : G.edges()) {
             if (e.weight() < 0)
                 throw new IllegalArgumentException("edge " + e + " has a negative weight");
@@ -57,8 +60,10 @@ public class Dijkstra {
         pq.insert(s, distTo[s]);
         while (!pq.isEmpty()) {
             int v = pq.delMin();
-            for (DirectedEdge e : G.adj(v))
+            for (DirectedEdge e : G.adj(v)){
+                edgesCounted++;
                 relax(e);
+            }
         }
 
         // check optimality conditions
@@ -109,6 +114,10 @@ public class Dijkstra {
             path.push(e);
         }
         return path;
+    }
+    
+    public int edgeCount(){
+        return edgesCounted;
     }
 
 

@@ -30,7 +30,8 @@ import java.util.Stack;
  * @author Eric Ravestein
  * @authot Nico Tromp
  */ 
-    public class FloydWarshall {
+public class FloydWarshall {
+    private int edgesCounted = 0;
     private boolean hasNegativeCycle;  // is there a negative cycle?
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
@@ -42,6 +43,7 @@ import java.util.Stack;
      * @param G the edge-weighted digraph
      */
     public FloydWarshall(AdjMatrixEdgeWeightedDigraph G) {
+        edgesCounted = 0;
         int V = G.V();
         distTo = new double[V][V];
         edgeTo = new DirectedEdge[V][V];
@@ -73,6 +75,7 @@ import java.util.Stack;
                 if (edgeTo[v][i] == null) continue;  // optimization
                 for (int w = 0; w < V; w++) {
                     if (distTo[v][w] > distTo[v][i] + distTo[i][w]) {
+                        edgesCounted++;
                         distTo[v][w] = distTo[v][i] + distTo[i][w];
                         edgeTo[v][w] = edgeTo[i][w];
                     }
@@ -84,6 +87,10 @@ import java.util.Stack;
                 }
             }
         }
+    }
+    
+    public int edgeCount(){
+        return edgesCounted;
     }
 
     /**

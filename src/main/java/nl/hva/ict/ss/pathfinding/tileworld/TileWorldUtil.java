@@ -26,6 +26,7 @@ public class TileWorldUtil implements TileWorld {
      * The directory where all tile world images that will be searched are
      * stored
      */
+    
     public static String inputDir = "/input/";
     /**
      * The directory where all tile world solution images are stored
