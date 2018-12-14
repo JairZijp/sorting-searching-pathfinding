@@ -14,10 +14,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // Make sure that it is writeable and we know where to look for it
-        TileWorldUtil.outputDir = "C:/programming/output/";
+        TileWorldUtil.outputDir = "C:/Users/jairz/Downloads/output/";
         
-	System.out.printf("ID;\tL-Dij;\tL-Flo;\tC-Dij;\tC-Flo\tK-Dij\tK-Flo\n");
-	for (int i = 1; i <= 21; i++) {
+	System.out.printf("ID;\tN-Dij;\tL-Dij;\tC-Dij;\tN-Flo\tL-Flo\tC-Flo\n");
+	for (int i = 1; i <= 24; i++) {
             // Read the graph directly from a image
             EdgeWeightedDigraph graafDijkstra = new EdgeWeightedDigraph("i" + i);
             // Get the start and end node
